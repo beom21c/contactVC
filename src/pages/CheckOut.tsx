@@ -23,8 +23,8 @@ export default function CheckOut() {
   const agreementsWidgetRef = useRef<ReturnType<
     PaymentWidgetInstance["renderAgreement"]
   > | null>(null);
-  const [price, setPrice] = useState(50_000);
-  const [title, setTitle] = useState('');
+  const [price, setPrice] = useState<any>(50_000);
+  const [title, setTitle] = useState<any>('');
   const router = useRouter();
 
   useEffect(() => {
