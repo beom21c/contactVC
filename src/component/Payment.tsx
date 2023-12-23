@@ -5,6 +5,7 @@ import {manageObject} from "@/util/manageObject";
 
 export default function Payment({type}:any){
 
+    console.log(type,'type:::')
     const pricing = useAppSelector((state) => state.common.pricing)
 
     const [list, totalPrice] = useMemo(() => {
@@ -103,7 +104,7 @@ export default function Payment({type}:any){
             <div style={{marginTop : 30, height : 68, backgroundColor : '#4181A0', display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center', color : 'white', fontSize : 20, marginBottom : 180,
-                cursor : 'pointer'}} onClick={payments}>이용권 결제하기</div>
+                cursor : 'pointer'}} onClick={payments}>{type === 'pass' && '이용권'} 결제하기</div>
         </div>
     </>
 }
