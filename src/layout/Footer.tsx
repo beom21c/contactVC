@@ -1,7 +1,7 @@
 export default function Footer() {
 
 
-    return <div style={{padding: '40px 0px', boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.5)'}}>
+    return <div style={{padding: '40px 0px', boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.5)', marginTop : 180}}>
         <div style={{width: 1320, margin: '0 auto'}}>
             <div style={{
                 display: 'flex',

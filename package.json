@@ -11,7 +11,9 @@
   "dependencies": {
     "@tanstack/react-query": "^5.14.2",
     "@tosspayments/payment-widget-sdk": "^0.10.2",
+    "lodash": "^4.17.21",
     "next": "14.0.4",
+    "nookies": "^2.5.2",
     "react": "^18",
     "react-dom": "^18",
     "swiper": "^11.0.5"

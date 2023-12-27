@@ -1,0 +1,93 @@
+.login_container {
+    padding-top: 180px;
+
+    & > div:first-child {
+        width: 360px;
+        margin: 0px auto;
+        text-align: center;
+
+
+    }
+}
+
+.register_container {
+    padding-top: 180px;
+
+    & > div:first-child {
+        width: 360px;
+        margin: 0px auto;
+        text-align: center;
+
+        & > h2 {
+            font-size: 30px;
+        }
+
+        & > div {
+            text-align: left;
+            padding-top: 20px;
+            font-size: 18px;
+
+            & > span {
+                color: red;
+            }
+        }
+
+        & > input {
+            width: 100%;
+            height: 48px;
+            border-radius: 10px;
+            border: 1px solid lightgray;
+            margin-top: 15px;
+            padding-left: 10px;
+            box-sizing: border-box;
+        }
+
+    }
+}
+
+.terms_container {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    font-size: 15px;
+
+    & > div {
+        display: flex;
+        align-items: center;
+        padding: 0px 10px;
+        height: 40px;
+        font-size: 15.5px;
+    }
+}
+
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc; /* 테두리 스타일 */
+    /*padding: 5px;*/
+    border-radius: 10px; /* 둥근 모서리를 위한 스타일 */
+    height: 48px;
+    margin-top: 15px;
+    padding: 0 !important;
+}
+
+.input-wrapper input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding-left: 10px;
+}
+
+.input-wrapper .suffix {
+    height: 48px;
+    background-color: #fafafa;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    width: 83px;
+    justify-content: center;
+    cursor: pointer;
+}
