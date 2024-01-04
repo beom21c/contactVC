@@ -2,7 +2,8 @@ import {createSlice} from "@reduxjs/toolkit";
 
 
 const initialState = {
-    pricing : [{name : '1 이용권', price : 75000, discountPrice : 0}]
+    pricing : [{name : '1 이용권', price : 75000, discountPrice : 0}],
+    buyType : {title : '', img : '', price : '', type : ''}
 };
 
 
@@ -12,12 +13,15 @@ const commonSlice = createSlice({
             const {payload} = action;
             state.pricing = [payload]
         },
-
+        setBuyType: (state, action) => {
+            const {payload} = action;
+            state.buyType = [payload]
+        },
     }
 });
 
 const {actions, reducer: commonReducer} = commonSlice;
 
-export const {setPrice} = actions;
+export const {setPrice, setBuyType} = actions;
 
 export default commonReducer;

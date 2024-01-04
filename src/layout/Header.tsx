@@ -2,21 +2,23 @@ import {useEffect, useState} from "react";
 import Link from "next/link";
 import {getCookie, removeCookie} from "@/util/cookie";
 import cookie from "nookies";
+import {useAppDispatch, useAppSelector} from "@/templates/hooks/reduxHooks";
+import {setUserInfo} from "@/store/authSlice";
+import {useRouter} from "next/router";
 
 export default function Header() {
-
+    const router = useRouter();
+    const dispatch = useAppDispatch();
+    const userInfo = useAppSelector((state) => state.user.userInfo);
 
     const [state, setState] = useState('')
 
 
-    useEffect(() => {
-        const result = cookie.get(null,'user');
-        setState(result?.user)
-    }, []);
-
     function logOut(){
-        removeCookie(null,'user')
-        setState('');
+        dispatch(setUserInfo(null));
+        removeCookie(null, 'accessToken')
+        removeCookie(null, 'refreshToken')
+        router.push('/');
     }
 
     return <div style={{
@@ -32,7 +34,7 @@ export default function Header() {
             <img src={'/img/logo.svg'} style={{float: 'left', width: 200}}/>
             <div style={{float: 'right', paddingTop: 11, fontSize: 14, color: '#11414B'}}>
                 <>
-                    {state ?
+                    {userInfo ?
                         <>
                         <span style={{padding: '0px 18px 0px 18px', display: 'inline-block', cursor : 'pointer'}}>마이페이지</span>
                         <span style={{padding: '0px 18px 0px 18px', display: 'inline-block', color : 'red', opacity : 0.8, cursor : 'pointer'}} onClick={logOut}>로그아웃</span>
@@ -51,12 +53,12 @@ export default function Header() {
             </div>
             <div style={{float: 'right', paddingTop: 10, fontSize: 16, fontWeight: 600}}>
                 <span style={{padding: '0px 35px 0px 35px', display: 'inline-block'}}>STARTUPVC</span>
-                <span style={{padding: '0px 22px 0px 22px', display: 'inline-block'}}>EVENTFORUM</span>
-                <span style={{padding: '0px 22px 0px 22px', display: 'inline-block'}}>IR INVEST</span>
-                <span style={{padding: '0px 22px 0px 22px', display: 'inline-block'}}>스타트업랭킹</span>
-                <span style={{padding: '0px 22px 0px 22px', display: 'inline-block'}}>스타트업Short</span>
-                <span style={{padding: '0px 22px 0px 22px', display: 'inline-block'}}>채용공고</span>
-                <span style={{padding: '0px 22px 0px 22px', display: 'inline-block'}}>뉴스보도</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block'}}>EVENTFORUM</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block'}}>IR INVEST</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block'}}>스타트업랭킹</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block'}}>스타트업Short</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block'}}>채용공고</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block'}} onClick={()=> router.push('/News')}>뉴스보도</span>
             </div>
         </div>
     </div>

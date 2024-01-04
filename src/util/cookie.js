@@ -19,8 +19,8 @@ export const removeCookie = (ctx, key) => {
     cookie.destroy(ctx, key);
 };
 
-export const getCookie = (key) => {
+export const getCookie = (ctx, key) => {
 
-    return cookie.get(key)
+    return cookie.get(ctx,key)
 };
 

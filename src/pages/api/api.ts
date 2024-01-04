@@ -1,4 +1,6 @@
 import axios from "axios";
+import {authService} from "@/util/manageExtra";
+import {getCookie} from "@/util/cookie";
 
 
 
@@ -8,11 +10,30 @@ import axios from "axios";
 //export const API_URL = 'http://localhost:3410/';
 
 //DEV
- export const API_URL = 'http://3.104.79.238:80';
+//  export const API_URL = 'http://3.104.79.238:80';
+ export const API_URL = 'http://localhost:80';
 
+// @ts-ignore
 export const getData = axios.create({
     baseURL: API_URL,
     headers: {
-        "Content-Type" : "application/json",
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getCookie(null,'accessToken').accessToken}`,
+        "Refresh": getCookie(null,'refreshToken').refreshToken
     }
+});
+
+// 요청 인터셉터 추가
+getData.interceptors.request.use(config => {
+    const accessToken = getCookie(null,'accessToken').accessToken;
+    const refreshToken = getCookie(null,'refreshToken').refreshToken;
+    if (accessToken) {
+        config.headers['Authorization'] = `Bearer ${accessToken}`;
+        config.headers['Refresh'] = refreshToken;
+    }
+    return config;
+}, error => {
+    // 요청 에러 처리
+    return Promise.reject(error);
 });

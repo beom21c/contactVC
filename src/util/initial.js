@@ -314,3 +314,11 @@ export const initPricing = {
     '10 이용권' : 0,
     '20 이용권' : 0,
 }
+export const buyBannerType = {
+    header : { title : '상단 헤더 ZONE', img:'/img/PR_ex1.png', price : 1000000},
+    attractInvest : { title :'투자유치 스타트업 ZONE', img :  '/img/PR_ex2.png', price : 800000},
+    news : { title : '신문보도 스타트업 ZONE', img : '/img/PR_ex3.png', price : 800000},
+    newsPaper : { title : '뉴스 보도 등록', img : '', price : 20000},
+    short : { title : '스타트업 Short ZONE', img : '/img/PR_ex4.png', price : 500000},
+    vision : { title : '유망 스타트업 ZONE', img : '/img/PR_ex5.png', price : 500000}
+}

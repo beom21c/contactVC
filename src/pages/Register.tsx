@@ -72,10 +72,16 @@ export default function Register() {
             }
         })
         if(check){
-            await getData.post(`registerMember`, info).then(v=>{
-              alert('회원가입이 완료 되었습니다.');
-                router.push('/Login')
+            await getData.post(`member/signup`, info).then(v => {
+                console.log(v,'::::')
+            }).catch(err=>{
+                console.log(err,':::')
             })
+
+            // await getData.post(`registerMember`, info).then(v=>{
+            //   alert('회원가입이 완료 되었습니다.');
+            //     router.push('/Login')
+            // })
         }else{
             alert('빠진구간 있음')
         }

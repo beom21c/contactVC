@@ -5,19 +5,23 @@ import {useEffect} from "react";
 import {setPrice} from "@/store/commonSlice";
 import {useAppDispatch} from "@/templates/hooks/reduxHooks";
 import CardTitle from "@/component/CardTitle";
+import {wrapper} from "@/store/store";
+import initialServerRouter from "@/util/initialServerRouter";
+import {buyBannerType} from "@/util/initial";
 
-export default function BannerPricing(){
+export default function BannerPricing(props : any){
     const dispatch = useAppDispatch();
 
     useEffect(() => {
 
+        const {title, price} = buyBannerType[props.type];
         const sendParam = {
-            name: '유망 스타트업 ZONE',
-            price: 500000,
+            name: title,
+            price: price,
             discountPrice: 0
         }
         dispatch(setPrice(sendParam));
-    }, []);
+    }, [props]);
 
 
     return <>
@@ -29,4 +33,17 @@ export default function BannerPricing(){
         <Footer/>
     </>
 }
+
+
+export const getServerSideProps  = wrapper.getStaticProps((store: any) => async (ctx: any) => {
+
+    await initialServerRouter(ctx, store);
+    const { query } = ctx;
+    const { type } = query; // 쿼리에서 '
+
+    return {
+        props: type ?{ type } : '' // 페이지 컴포넌트로 props를 통해 전달
+    };
+});
+
 

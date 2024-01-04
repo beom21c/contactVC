@@ -1,10 +1,14 @@
 import Header from "@/layout/Header";
 import Footer from "@/layout/Footer";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {getData} from "@/pages/api/api";
-import {setCookie} from "@/util/cookie";
+import {getCookie, setCookie} from "@/util/cookie";
 import {useRouter} from "next/router";
 import Link from "next/link";
+import {authService} from "@/util/manageExtra";
+import cookie from "nookies";
+import initialServerRouter from "@/util/initialServerRouter";
+import {wrapper} from "@/store/store";
 
 export default function Login() {
     const router = useRouter();
@@ -20,6 +24,8 @@ export default function Login() {
         })
     }
 
+    useEffect(() => {
+    }, []);
     async function login() {
         const list = Object.values(info)
         let check = true
@@ -29,20 +35,19 @@ export default function Login() {
             }
         });
         if (check) {
-            await getData.post(`login`, info).then(v => {
-                const {data, result} = v.data;
-                if (result) {
-                    setCookie(null, 'user', data[0].name);
-                    alert('로그인 성공')
-                    router.push('/')
-                } else {
-                    alert('로그인 정보가 올바르지 않습니다.')
-                }
+            await getData.post(`member/signin`, info).then(v => {
+                const {accessToken, refreshToken} = v.data.data;
+                setCookie(null, 'accessToken', accessToken);
+                setCookie(null, 'refreshToken', refreshToken);
+                router.push('/')
+            }).catch(err =>{
+                console.log(err,':::')
             })
         } else {
             alert('빠진구간 있음')
         }
     }
+
 
     return <>
 
@@ -58,7 +63,7 @@ export default function Login() {
                        placeholder={'패스워드를 입력하세요'}/>
 
 
-                <div style={{textAlign: 'right', fontSize: 13}}> <Link href={'/Register'}>회원가입</Link> <span>|</span> 아이디/비밀번호 찾기</div>
+                <div style={{textAlign: 'right', fontSize: 13}}> <Link href={'/Register'}>회원가입</Link> <span>|</span> <Link href={'/FindId'}>아이디/비밀번호 찾기</Link></div>
                 <div onClick={login} style={{
                     height: 48, backgroundColor: '#4181a0', display: 'flex', padding: 0, borderRadius: 5,
                     alignItems: 'center', justifyContent: 'center', color: 'white', marginTop: 10, cursor: "pointer"
@@ -89,3 +94,38 @@ export default function Login() {
         </div>
     </>
 }
+
+
+export const getServerSideProps  = wrapper.getStaticProps((store: any) => async (ctx: any) => {
+
+  const {userState} = await initialServerRouter(ctx, store);
+
+
+
+    // const { req } = context;
+    // const token = req.cookies.token; // 쿠키에서 토큰 가져오기
+    //
+    // try {
+    //     // 토큰 검증 로직
+    //     jwt.verify(token, secretKey);
+    //     return { props: {} };
+    // } catch (err) {
+    //     // 토큰이 유효하지 않은 경우 리디렉션
+    //     return {
+    //         redirect: {
+    //             destination: '/login',
+    //             permanent: false
+    //         }
+    //     };
+    // }
+
+    const redirectProperty = {
+        redirect: {
+            permanent: false,
+            destination: "/"
+        }
+    };
+    return userState ? redirectProperty :  {
+        props: {title: "tester", page: "tester"}
+    };
+});

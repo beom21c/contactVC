@@ -8,6 +8,8 @@ import 'swiper/css/pagination';
 import CardTitle from "@/component/CardTitle";
 import CardContents from "@/component/CardContent";
 import Footer from "@/layout/Footer";
+import {wrapper} from "@/store/store";
+import initialServerRouter from "@/util/initialServerRouter";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -39,3 +41,15 @@ export default function Home() {
         </>
     )
 }
+
+
+
+export const getServerSideProps  = wrapper.getStaticProps((store: any) => async (ctx: any) => {
+
+await initialServerRouter(ctx, store);
+
+
+    return {props: {title: "tester", page: "tester"}}
+
+});
+

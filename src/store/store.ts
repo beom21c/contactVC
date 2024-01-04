@@ -1,6 +1,7 @@
 import {combineReducers, configureStore, PayloadAction} from "@reduxjs/toolkit";
 import {createWrapper, HYDRATE} from "next-redux-wrapper";
 import commonReducer from "@/store/commonSlice";
+import authReducer from "@/store/authSlice";
 
 const reducer = (state: any, action: PayloadAction<any>) => {
     //hydration 일어날떄 별도 처리 구간
@@ -12,6 +13,7 @@ const reducer = (state: any, action: PayloadAction<any>) => {
     }
     return combineReducers({
         common: commonReducer,
+        user: authReducer,
 
     })(state, action);
 };
