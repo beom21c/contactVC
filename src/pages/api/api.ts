@@ -10,8 +10,8 @@ import {getCookie} from "@/util/cookie";
 //export const API_URL = 'http://localhost:3410/';
 
 //DEV
-//  export const API_URL = 'http://3.104.79.238:80';
- export const API_URL = 'http://localhost:80';
+ export const API_URL = 'http://3.104.79.238:80';
+ // export const API_URL = 'http://localhost:80';
 
 // @ts-ignore
 export const getData = axios.create({
