@@ -53,3 +53,15 @@ html, body {
 
   }
 }
+
+
+.tableSample{
+  & > div {
+      border : 1px solid lightgray;
+    }
+    & > #title {
+  padding : 20px 0px 0px 45px;
+  min-height: 45px;
+      }
+
+}

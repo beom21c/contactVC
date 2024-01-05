@@ -320,5 +320,8 @@ export const buyBannerType = {
     news : { title : '신문보도 스타트업 ZONE', img : '/img/PR_ex3.png', price : 800000},
     newsPaper : { title : '뉴스 보도 등록', img : '', price : 20000},
     short : { title : '스타트업 Short ZONE', img : '/img/PR_ex4.png', price : 500000},
-    vision : { title : '유망 스타트업 ZONE', img : '/img/PR_ex5.png', price : 500000}
+    vision : { title : '유망 스타트업 ZONE', img : '/img/PR_ex5.png', price : 500000},
+    A : { title : 'A 그룹', img : '', price : 1800000},
+    B : { title : 'B 그룹', img : '', price : 940000},
+    C : { title : 'C 그룹', img : '', price : 490000}
 }
