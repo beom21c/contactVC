@@ -31,7 +31,7 @@ export default function Header() {
         width: '100%'
     }}>
         <div style={{padding: '0px 32px 0px 32px', width: '100%'}}>
-            <img src={'/img/logo.svg'} style={{float: 'left', width: 200}}/>
+            <img src={'/img/logo.svg'} style={{float: 'left', width: 200, cursor : 'pointer'}} onClick={()=> router.push('/')}/>
             <div style={{float: 'right', paddingTop: 11, fontSize: 14, color: '#11414B'}}>
                 <>
                     {userInfo ?
@@ -52,13 +52,13 @@ export default function Header() {
                                                                                            style={{paddingRight: 4}}/>검색</span>
             </div>
             <div style={{float: 'right', paddingTop: 10, fontSize: 16, fontWeight: 600}}>
-                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block'}}>STARTUPVC</span>
-                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block'}}>EVENTFORUM</span>
-                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block'}}>IR INVEST</span>
-                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block'}}>스타트업랭킹</span>
-                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block'}}>스타트업Short</span>
-                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block'}}>채용공고</span>
-                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block'}} onClick={()=> router.push('/News')}>뉴스보도</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}}>STARTUVC</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}}>EVENTFORUM</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}}>IR INVEST</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}}>스타트업랭킹</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}}>스타트업Short</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}}>채용공고</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}} onClick={()=> router.push('/News')}>뉴스보도</span>
             </div>
         </div>
     </div>

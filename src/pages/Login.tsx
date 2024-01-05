@@ -41,7 +41,7 @@ export default function Login() {
                 setCookie(null, 'refreshToken', refreshToken);
                 router.push('/')
             }).catch(err =>{
-                console.log(err,':::')
+                alert(err.response.data.message)
             })
         } else {
             alert('빠진구간 있음')

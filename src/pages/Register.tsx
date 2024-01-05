@@ -73,9 +73,10 @@ export default function Register() {
         })
         if(check){
             await getData.post(`member/signup`, info).then(v => {
-                console.log(v,'::::')
+                alert('register complete')
+                router.push('Login')
             }).catch(err=>{
-                console.log(err,':::')
+                alert(err.response.data)
             })
 
             // await getData.post(`registerMember`, info).then(v=>{
