@@ -52,11 +52,10 @@ export default function Header() {
                                                                                            style={{paddingRight: 4}}/>검색</span>
             </div>
             <div style={{float: 'right', paddingTop: 10, fontSize: 16, fontWeight: 600}}>
-                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}}>STARTUVC</span>
-                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}}>EVENTFORUM</span>
-                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}}>IR INVEST</span>
-                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}}>스타트업랭킹</span>
-                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}}>스타트업Short</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}} onClick={()=> router.push('/start_up_vc')}>STARTVC</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}} onClick={()=> router.push('/eventforum')}>EVENTFORUM</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}} onClick={()=> router.push('/ir')}>IR INVEST</span>
+                <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}} onClick={()=> router.push('/start_short')}>스타트업Short</span>
                 <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}}>채용공고</span>
                 <span style={{padding: '0px 35px 0px 35px', display: 'inline-block', cursor : 'pointer'}} onClick={()=> router.push('/News')}>뉴스보도</span>
             </div>
