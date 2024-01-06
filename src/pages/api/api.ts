@@ -10,7 +10,7 @@ import {getCookie} from "@/util/cookie";
 //export const API_URL = 'http://localhost:3410/';
 
 //DEV
- export const API_URL = 'http://ec2-3-26-11-110.ap-southeast-2.compute.amazonaws.com:80';
+ export const API_URL = 'ec2-43-200-179-236.ap-northeast-2.compute.amazonaws.com:8000';
  // export const API_URL = 'http://localhost:80';
 
 // @ts-ignore
