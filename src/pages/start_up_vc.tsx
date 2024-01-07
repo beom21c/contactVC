@@ -4,6 +4,8 @@ import CardTitle from "@/component/CardTitle";
 import StartUpCompany from "@/component/StartUpCompany";
 import StartUpInvest from "@/component/StartUpInvest";
 import {useState} from "react";
+import {wrapper} from "@/store/store";
+import initialServerRouter from "@/util/initialServerRouter";
 
 export default function StartUpVc() {
 
@@ -85,3 +87,18 @@ export default function StartUpVc() {
         <Footer/>
     </>
 }
+
+export const getServerSideProps  = wrapper.getStaticProps((store: any) => async (ctx: any) => {
+
+    const {userState} = await initialServerRouter(ctx, store);
+
+    const redirectProperty = {
+        redirect: {
+            permanent: false,
+            destination: "/Login"
+        }
+    };
+    return userState ?   {
+        props: {title: "tester", page: "tester"}
+    } : redirectProperty
+});
