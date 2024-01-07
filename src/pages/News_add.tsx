@@ -47,9 +47,9 @@ export default function NewsAdd() {
                        <div style={{border : '1px solid lightGray', borderRadius : 4, textAlign : 'center', fontSize : 14, cursor : "pointer"}}>
                            <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}}>메세지 목록</div>
                            <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}} onClick={()=> router.push('/Pricing')}>이용권 구매</div>
-                           <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}}>투자사로 컨택 IR 발송하기</div>
-                           <div style={{borderBottom : '1px solid lightGray',  height : 31, paddingTop : 14}}>투자사로 컨택 메세지 발송하기</div>
-                           <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}}>심사역 연락처 요청하기</div>
+                           <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}} onClick={()=> router.push('/send_ir')}>투자사로 컨택 IR 발송하기</div>
+                           <div style={{borderBottom : '1px solid lightGray',  height : 31, paddingTop : 14}} onClick={()=> router.push('/send_ir')}>투자사로 컨택 메세지 발송하기</div>
+                           <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}} onClick={()=> router.push('/send_ir')}>심사역 연락처 요청하기</div>
                            <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}} onClick={()=> router.push('/news_spread')}>뉴스 기사 작성 배포</div>
                            <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}}>신청 내역</div>
                            <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}}>결제 내역</div>

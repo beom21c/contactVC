@@ -325,3 +325,5 @@ export const buyBannerType = {
     'B' : { title : 'B 그룹', img : '', price : 940000},
     'C' : { title : 'C 그룹', img : '', price : 490000}
 }
+
+export const modalInit = {type: '', props: {}}
