@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import React, {useEffect, useState} from "react";
 import {useAppDispatch, useAppSelector} from "@/templates/hooks/reduxHooks";
-import {InvestReqModal, InvestReqModalㅌ, IrModal} from "@/component/ModalForm";
+import {InvestReqModal, InvestReqModal, IrModal} from "@/component/ModalForm";
 import {modalInit} from "@/util/initial";
 import {setModal} from "@/store/commonSlice";
 
