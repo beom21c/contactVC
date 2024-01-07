@@ -110,7 +110,7 @@ export default function BuyBanner(props) {
         </div>
 
 
-        <Footer/>
+        <Header/>
     </>
 }
 
@@ -121,7 +121,6 @@ export const getServerSideProps = wrapper.getStaticProps((store: any) => async (
     const {query} = ctx;
     const {type} = query; // 쿼리에서 '
 
-    console.log(query, 'myParam:')
     return {
         props: type ? {type} : '' // 페이지 컴포넌트로 props를 통해 전달
     };

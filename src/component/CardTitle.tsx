@@ -2,8 +2,6 @@ import Payment from "@/component/Payment";
 
 export default function CardTitle({title, subTitle}:any) {
 
-    console.log(title,'title:')
-
     return <div style={{height: 55, borderBottom: '1px solid #e5e5e5'}}>
         <div style={{
             display: 'flex',

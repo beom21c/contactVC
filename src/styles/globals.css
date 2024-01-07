@@ -65,3 +65,17 @@ html, body {
       }
 
 }
+
+
+.introduceText{
+    & > div {
+  padding-top : 20px;
+      font-weight: 700;
+  font-size: 14px;
+& > span {
+    font-weight: 400;
+    font-size: 14px;
+  color : #616161;
+  }
+      }
+}

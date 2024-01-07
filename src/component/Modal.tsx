@@ -11,7 +11,6 @@ export default function Modal() {
     const dispatch = useAppDispatch();
     const modal = useAppSelector((state) => state.common.modal);
 
-    console.log(modal,'modal:')
     const {type} = modal;
 
     const [contents, setContents] = useState<any>(null);
