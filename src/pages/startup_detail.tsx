@@ -82,7 +82,7 @@ export default function StartupDetail(props) {
 
                             <div>기업 상세소개</div>
 
-                            <div><span>출판 콘텐츠(IP) 시장의 시작점을 Re-Engineering 하는 출판 콘텐츠(IP) 플랫폼> 기업입니다.</span></div>
+                            <div><span>출판 콘텐츠(IP) 시장의 시작점을 Re-Engineering 하는 출판 콘텐츠(IP) 플랫폼{'>'} 기업입니다.</span></div>
 
                         </div>
 
