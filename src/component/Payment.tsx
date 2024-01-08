@@ -95,13 +95,21 @@ export default function Payment({type}:any){
 
         <div style={{paddingTop : 40}}>
             <div>
-                {type === 'pass' && <span style={{
+                {type === 'pass' && <div style={{
                     fontSize: 14,
                     float: 'left'
-                }}>이용권 구매하시면 투자사 심사역 으로 IR 자료 발송 , 투자요청 메시지 발송하기를 사용할수 있습니다.</span>}
+                }}>이용권 구매하시면 투자사 심사역 으로 IR 자료 발송 , 투자요청 메시지 발송하기를 사용할수 있습니다.</div>}
+            </div>
+            <br/>
+            <div style={{paddingTop : 5}}>
+                {type === 'pass' && <div style={{
+                    fontSize: 14,
+                    float: 'left',
+                }}>이용권은 구매시점 서비스 제공기간은 12개월 입니다</div>}
+
                 <span style={{fontSize : 14, float : 'right'}}><input type="checkbox"/> 안내사항을 확인하였으며, 모두 동의합니다.</span>
             </div>
-            <div style={{marginTop : 30, height : 68, backgroundColor : '#4181A0', display: 'flex',
+            <div style={{marginTop : 25, height : 68, backgroundColor : '#4181A0', display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center', color : 'white', fontSize : 20, marginBottom : 180,
                 cursor : 'pointer'}} onClick={payments}>{type === 'pass' && '이용권'} 결제하기</div>
