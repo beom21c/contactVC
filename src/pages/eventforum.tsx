@@ -2,6 +2,8 @@ import Header from "@/layout/Header";
 import Footer from "@/layout/Footer";
 import CardTitle from "@/component/CardTitle";
 import {useState} from "react";
+import {wrapper} from "@/store/store";
+import initialServerRouter from "@/util/initialServerRouter";
 
 export default function EventForum() {
 
@@ -276,3 +278,18 @@ export default function EventForum() {
         <Footer/>
     </>
 }
+
+export const getServerSideProps  = wrapper.getStaticProps((store: any) => async (ctx: any) => {
+
+    const {userState} = await initialServerRouter(ctx, store);
+
+    const redirectProperty = {
+        redirect: {
+            permanent: false,
+            destination: "/Login"
+        }
+    };
+    return userState ?   {
+        props: {title: "tester", page: "tester"}
+    } : redirectProperty
+});

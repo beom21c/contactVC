@@ -3,6 +3,8 @@ import Footer from "@/layout/Footer";
 import CardTitle from "@/component/CardTitle";
 import {useState} from "react";
 import {useRouter} from "next/router";
+import {wrapper} from "@/store/store";
+import initialServerRouter from "@/util/initialServerRouter";
 
 export default function StartShort() {
     const router = useRouter();
@@ -149,3 +151,19 @@ export default function StartShort() {
         <Footer/>
     </>
 }
+
+export const getServerSideProps  = wrapper.getStaticProps((store: any) => async (ctx: any) => {
+
+    const {userState} = await initialServerRouter(ctx, store);
+
+    const redirectProperty = {
+        redirect: {
+            permanent: false,
+            destination: "/Login"
+        }
+    };
+    return userState ?   {
+        props: {title: "tester", page: "tester"}
+    } : redirectProperty
+});
+

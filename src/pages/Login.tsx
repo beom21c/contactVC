@@ -100,25 +100,6 @@ export const getServerSideProps  = wrapper.getStaticProps((store: any) => async 
 
   const {userState} = await initialServerRouter(ctx, store);
 
-
-
-    // const { req } = context;
-    // const token = req.cookies.token; // 쿠키에서 토큰 가져오기
-    //
-    // try {
-    //     // 토큰 검증 로직
-    //     jwt.verify(token, secretKey);
-    //     return { props: {} };
-    // } catch (err) {
-    //     // 토큰이 유효하지 않은 경우 리디렉션
-    //     return {
-    //         redirect: {
-    //             destination: '/login',
-    //             permanent: false
-    //         }
-    //     };
-    // }
-
     const redirectProperty = {
         redirect: {
             permanent: false,
