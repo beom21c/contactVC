@@ -20,7 +20,6 @@ const commonSlice = createSlice({
         },
         setModal: (state, action) => {
             const {payload} = action;
-            console.log(payload,'payload:::')
             state.modal = payload
         },
     }

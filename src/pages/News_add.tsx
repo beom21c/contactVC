@@ -3,46 +3,39 @@ import Header from "@/layout/Header";
 import {wrapper} from "@/store/store";
 import initialServerRouter from "@/util/initialServerRouter";
 import {useRouter} from "next/router";
+import AddNews from "@/component/AddNews";
+import {useMemo} from "react";
+import CompanyProfile from "@/component/CompanyProfile";
+import UpdateProfile from "@/component/UpdateProfile";
+import Modal from "@/component/Modal";
 
-export default function NewsAdd() {
+export default function NewsAdd(props) {
 
     const router = useRouter();
+
+
+    const content = useMemo(() => {
+        switch (props?.type) {
+            case 'company_profile':
+                return <CompanyProfile/>
+                break;
+            case 'update_company_profile':
+                return <UpdateProfile/>
+                break;
+            default :
+                return <AddNews/>
+                break;
+        }
+
+    }, [props])
+
     return <>
         <Header/>
         <div style={{paddingTop: 190}}>
 
             <div style={{width : 1320, height : '100%', margin : '0px auto'}}>
                 <div style={{display: 'grid', gridTemplateColumns: '1fr 243px', columnGap: 13}}>
-                   <div>
-                       <div style={{fontWeight : 600}}>뉴스 보도 {'>'} 뉴스보도 등록</div>
-                       <div style={{width : '100%', height : '100%', backgroundColor : 'white', marginTop : 40}}>
-                         <div style={{padding : 20}}>
-                             <div style={{fontWeight : 500}}>기업명</div>
-                             <input type="text" style={{width : 360, height : 40, marginTop : 15, border : '1px solid lightGray', borderRadius : 5, paddingLeft : 10, fontSize : 16}}
-                             placeholder={'기업명을 입력해주세요'}/>
-                             <div style={{fontWeight : 500, marginTop : 40}}>기사 제목</div>
-                             <input type="text" style={{width : 360, height : 40, marginTop : 15, border : '1px solid lightGray', borderRadius : 5, paddingLeft : 10, fontSize : 16}}
-                                    placeholder={'기업명을 입력해주세요'}/>
-                             <div style={{fontWeight : 500, marginTop : 40}}>기사 링크</div>
-                             <input type="text" style={{width : 360, height : 40, marginTop : 15, border : '1px solid lightGray', borderRadius : 5, paddingLeft : 10, fontSize : 16}}
-                                    placeholder={'기업명을 입력해주세요'}/>
-                             <div style={{fontWeight : 500, marginTop : 40}}>기사 내용</div>
-                             <textarea style={{width : '100%', height : 100, marginTop : 15, border : '1px solid lightGray', borderRadius : 5, paddingLeft : 10, fontSize : 16}}
-                                    placeholder={'기업명을 입력해주세요'}/>
-                             <div style={{paddingTop : 300}}>
-                                 <div style={{float : 'right', width : 127, height : 46,backgroundColor : '#4181a0' , color : 'white', borderRadius : 7, display : 'flex',
-                                     alignItems: 'center',
-                                     justifyContent: 'center',
-                                     cursor : 'pointer'
-                                 }} onClick={()=>router.push(`/BannerPricing?type=${'newsPaper'}`)}>등록하기</div>
-                                 <div style={{float : 'right', width : 127, height : 46, color : 'white', backgroundColor : 'gray', borderRadius : 7, display : 'flex',
-                                     alignItems: 'center',
-                                     justifyContent: 'center', marginRight : 5}}>취소</div>
-                             </div>
-                         </div>
-
-                       </div>
-                   </div>
+                    {content}
                    <div>
                        <div style={{border : '1px solid lightGray', borderRadius : 4, textAlign : 'center', fontSize : 14, cursor : "pointer"}}>
                            <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}}>메세지 목록</div>
@@ -97,14 +90,14 @@ export default function NewsAdd() {
                            <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}}>투자사 스크랩 리스트</div>
                            <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}}>IR 자료 업로드</div>
                            <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}}>팀원 등록 및 관리</div>
-                          <div style={{borderBottom : '1px solid lightGray',  height : 31, paddingTop : 14}}>기업 프로필</div>
+                          <div style={{borderBottom : '1px solid lightGray',  height : 31, paddingTop : 14}} onClick={()=>router.push(`/News_add?type=company_profile`)}>기업 프로필</div>
                            <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}}>회원정보 수정</div>
                            <div style={{borderBottom : '1px solid lightGray', height : 31, paddingTop : 14}}>로그아웃</div>
                        </div>
                    </div>
                 </div>
             </div>
-
+            {typeof window !== 'undefined' && <Modal/>}
         </div>
         <Footer/>
     </>
@@ -113,28 +106,11 @@ export default function NewsAdd() {
 
 export const getServerSideProps = wrapper.getStaticProps((store: any) => async (ctx: any) => {
 
-    await initialServerRouter(ctx, store);
+    const result = await initialServerRouter(ctx, store);
+    const {query} = ctx;
+    const {type} = query; // 쿼리에서 '
 
-
-    // const { req } = context;
-    // const token = req.cookies.token; // 쿠키에서 토큰 가져오기
-    //
-    // try {
-    //     // 토큰 검증 로직
-    //     jwt.verify(token, secretKey);
-    //     return { props: {} };
-    // } catch (err) {
-    //     // 토큰이 유효하지 않은 경우 리디렉션
-    //     return {
-    //         redirect: {
-    //             destination: '/login',
-    //             permanent: false
-    //         }
-    //     };
-    // }
-
-    return {props: {title: "tester", page: "tester"}}
-
+    return {
+        props: type ? {type} : '' // 페이지 컴포넌트로 props를 통해 전달
+    };
 });
-
-

@@ -3,14 +3,18 @@ import Footer from "@/layout/Footer";
 import CardTitle from "@/component/CardTitle";
 import StartUpCompany from "@/component/StartUpCompany";
 import StartUpInvest from "@/component/StartUpInvest";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {wrapper} from "@/store/store";
 import initialServerRouter from "@/util/initialServerRouter";
+import {getData} from "@/pages/api/api";
 
 export default function StartUpVc() {
 
 
     const [type, setType] = useState('startup');
+
+
+
 
     return <>
         <Header/>

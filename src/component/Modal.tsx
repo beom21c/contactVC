@@ -1,28 +1,31 @@
 import ReactDOM from "react-dom";
 import React, {useEffect, useState} from "react";
 import {useAppDispatch, useAppSelector} from "@/templates/hooks/reduxHooks";
-import {InvestReqModal, IrModal} from "@/component/ModalForm";
+import {AddMemberModal, InvestReqModal, IrModal} from "@/component/ModalForm";
 import {modalInit} from "@/util/initial";
 import {setModal} from "@/store/commonSlice";
-
 
 
 export default function Modal() {
     const dispatch = useAppDispatch();
     const modal = useAppSelector((state) => state.common.modal);
 
-    const {type} = modal;
+    const {type, props} = modal;
 
     const [contents, setContents] = useState<any>(null);
 
     useEffect(() => {
 
+        console.log(props, 'type:')
         switch (type) {
             case  'send_invest' :
                 setContents(<InvestReqModal type={'send_invest'}/>)
                 break;
             case  'send_ir' :
                 setContents(<IrModal type={'send_ir'}/>)
+                break;
+            case  'add_member' :
+                setContents(<AddMemberModal type={'add_member'} props={props}/>)
                 break;
             default :
                 setContents(null)

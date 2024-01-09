@@ -1,6 +1,8 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {formatPriceDot} from "@/util/temp";
 import {useRouter} from "next/router";
+import {getData} from "@/pages/api/api";
+import {investStepInfo} from "@/util/initial";
 
 export default function StartUpCompany(){
     const router = useRouter();
@@ -189,6 +191,20 @@ export default function StartUpCompany(){
     ]
 
     const [sortType, setSortType] = useState(0)
+    const [companyList, setCompanyList] = useState([])
+
+
+
+    useEffect(() => {
+        getCompanyList().then(v => {
+            setCompanyList(v.data)
+        })
+    }, []);
+
+    async function getCompanyList() {
+        return await getData.get(`company/getCompanyList`)
+    }
+
 
 
     function openDetailContents(key){
@@ -483,7 +499,7 @@ export default function StartUpCompany(){
                         </div>
 
 
-                        {contentsList.map(v => {
+                        {companyList.map(v => {
                             return <div style={{
                                 display: 'grid',
                                 gridTemplateColumns: '1.5fr 35% 0.5fr 1fr 1fr 1fr',
@@ -494,7 +510,7 @@ export default function StartUpCompany(){
                                 fontWeight: 700,
                                 borderBottom: '1px solid lightGray',
                                 cursor : 'pointer'
-                            }} onClick={()=>openDetailContents(v.key)}>
+                            }} onClick={()=>openDetailContents(v.cid)}>
                                 <div style={{
                                     display: 'grid', gridTemplateColumns: '1fr 3fr',
                                     padding: '22px 0px 22px 20px'
@@ -503,7 +519,7 @@ export default function StartUpCompany(){
                                     <img src={v.img} width={50} height={50} alt="" style={{borderRadius: 30}}/>
                                     <div style={{paddingTop: 10}}>
                                         <div>{v.company}</div>
-                                        <div>{v.subCompany}</div>
+                                        {/*<div>{v.subCompany}</div>*/}
                                     </div>
                                 </div>
 
@@ -511,27 +527,27 @@ export default function StartUpCompany(){
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center', fontSize: 15,
-                                }}>{v.introduction}</span>
+                                }}>{v.introduce}</span>
                                 <span style={{
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center', fontSize: 15,
-                                }}>{v.member}</span>
+                                }}>{v.member_count}명</span>
                                 <span style={{
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center', fontSize: 15,
-                                }}>{v.investStep}</span>
+                                }}>{investStepInfo[v.investStep]}</span>
                                 <span style={{
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center', fontSize: 15,
-                                }}>{formatPriceDot(v.accCount)}원</span>
+                                }}>{formatPriceDot(parseFloat(v.acc_invest_amount))}원</span>
                                 <span style={{
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center', fontSize: 15,
-                                }}>{formatPriceDot(v.saleCount)}원</span>
+                                }}>{formatPriceDot(parseFloat(v.sales))}원</span>
                             </div>
                         })}
                     </div>

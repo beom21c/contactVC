@@ -16,9 +16,7 @@ export default async function (ctx, store) {
             store.dispatch(setUserInfo(v.data));
             userState = true
         }, async err => {
-            console.log('???')
             await getData.get('member/refresh').then(v => {
-                console.log(v,'v:::::')
                 const {data, userInfo} = v.data
                 const {accessToken, refreshToken} = data;
                 setCookie(ctx, 'accessToken', accessToken)
