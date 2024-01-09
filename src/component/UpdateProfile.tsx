@@ -97,10 +97,10 @@ export default function UpdateProfile() {
                 <div>기업명 <span>&nbsp;&nbsp;{companyInfo.company}</span></div>
                 <div style={{display: 'grid', gridTemplateColumns: '80px 1fr', rowGap: 20}}>
                     <div>기업 한줄소개</div>
-                    <textarea value={introduce} name={'introduce'} id="" cols="30" rows="3" onChange={changeForm}
+                    <textarea value={introduce} name={'introduce'} id="" cols={30} rows={3} onChange={changeForm}
                               style={{resize: 'none', marginLeft: 10, padding: '5px 5px 20px 5px'}}/>
                     <div>기업 상세소개</div>
-                    <textarea value={subIntroduce} name={'subIntroduce'} id="" cols="30" rows="3" onChange={changeForm}
+                    <textarea value={subIntroduce} name={'subIntroduce'} id="" cols={30} rows={3} onChange={changeForm}
                               style={{resize: 'none', marginLeft: 10, padding: '5px 5px 20px 5px'}}/>
 
                 </div>

@@ -210,6 +210,8 @@ export default function StartUpCompany(){
     function openDetailContents(key){
         router.push(`/startup_detail?type=${key}`)
     }
+
+    console.log(companyList,'companyList:::::')
     return <>
         <div>
             <div style={{
@@ -499,7 +501,7 @@ export default function StartUpCompany(){
                         </div>
 
 
-                        {companyList.map(v => {
+                        {companyList?.map((v:any) => {
                             return <div style={{
                                 display: 'grid',
                                 gridTemplateColumns: '1.5fr 35% 0.5fr 1fr 1fr 1fr',
@@ -510,7 +512,7 @@ export default function StartUpCompany(){
                                 fontWeight: 700,
                                 borderBottom: '1px solid lightGray',
                                 cursor : 'pointer'
-                            }} onClick={()=>openDetailContents(v.cid)}>
+                            }} onClick={()=>openDetailContents(v?.cid)}>
                                 <div style={{
                                     display: 'grid', gridTemplateColumns: '1fr 3fr',
                                     padding: '22px 0px 22px 20px'

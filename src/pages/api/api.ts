@@ -10,8 +10,8 @@ import {getCookie} from "@/util/cookie";
 //export const API_URL = 'http://localhost:3410/';
 
 //DEV
- export const API_URL = 'http://ec2-15-164-171-152.ap-northeast-2.compute.amazonaws.com';
- // export const API_URL = 'http://localhost:80';
+//  export const API_URL = 'http://ec2-15-164-171-152.ap-northeast-2.compute.amazonaws.com';
+ export const API_URL = 'http://localhost:80';
 
 // @ts-ignore
 export const getData = axios.create({

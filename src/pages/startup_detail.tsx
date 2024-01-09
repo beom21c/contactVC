@@ -13,8 +13,8 @@ export default function StartupDetail({type}) {
 
     const router = useRouter();
 
-    const [content, setContent] = useState([]);
-    const [newsList, setNewsList] = useState([]);
+    const [content, setContent] = useState<any>([]);
+    const [newsList, setNewsList] = useState<any>([]);
 
 
     useEffect(() => {
@@ -31,7 +31,6 @@ export default function StartupDetail({type}) {
     }
 
 
-    console.log(content[0]?.invest_count,'content[0]?.invest_count:::')
     return <>
         <Header/>
         <div style={{paddingTop: 80}}>
